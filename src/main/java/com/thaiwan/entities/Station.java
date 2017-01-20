@@ -1,9 +1,33 @@
 package com.thaiwan.entities;
 
-/**
- * Created by Tanya on 19.01.2017.
- */
+import javax.persistence.*;
+
+@Entity
+@Table(name = "stations")
 public class Station {
-    int stationId;
-    String name;
+    @Id
+    @Column(name="stationId")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int stationId;
+    @Column(name="stationName")
+    private String stationName;
+
+    public Station() {
+    }
+
+    public int getStationId() {
+        return stationId;
+    }
+
+    public String getStationName() {
+        return stationName;
+    }
+
+    public void setStationId(int stationId) {
+        this.stationId = stationId;
+    }
+
+    public void setStationName(String stationName) {
+        this.stationName = stationName;
+    }
 }

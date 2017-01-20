@@ -1,10 +1,36 @@
 package com.thaiwan.entities;
 
-/**
- * Created by Tanya on 19.01.2017.
- */
+import javax.persistence.*;
+
+@Entity
+@Table(name = "buses")
 public class Bus {
-    int busNumber;
-    String station;
-    int numberOfSeats;
+    @Id
+    @Column(name="busNumber")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int busNumber;
+    @Column(name = "numberOfSeats")
+    private int numberOfSeats;
+
+    public Bus() {}
+
+    public Bus(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
+
+    public int getBusNumber() {
+        return busNumber;
+    }
+
+    public int getNumberOfSeats() {
+        return numberOfSeats;
+    }
+
+    public void setBusNumber(int busNumber) {
+        this.busNumber = busNumber;
+    }
+
+    public void setNumberOfSeats(int numberOfSeats) {
+        this.numberOfSeats = numberOfSeats;
+    }
 }
