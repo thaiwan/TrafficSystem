@@ -1,6 +1,5 @@
 package com.thaiwan.managers;
 
-import com.thaiwan.entities.Bus;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

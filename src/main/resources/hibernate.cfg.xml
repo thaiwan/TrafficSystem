@@ -12,11 +12,11 @@
         <property name="show_sql">true</property>
         <property name="hbm2dll.auto">update</property>
 
-        <mapping class="com.thaiwan.entities.Passenger"/>
-        <mapping class="com.thaiwan.entities.Bus"/>
-        <mapping class="com.thaiwan.entities.Station"/>
-        <mapping class="com.thaiwan.entities.Ticket"/>
-        <mapping class="com.thaiwan.entities.Schedule"/>
+        <mapping class="com.thaiwan.domain.Passenger"/>
+        <mapping class="com.thaiwan.domain.Bus"/>
+        <mapping class="com.thaiwan.domain.Station"/>
+        <mapping class="com.thaiwan.domain.Ticket"/>
+        <mapping class="com.thaiwan.domain.Route"/>
 
 
     </session-factory>

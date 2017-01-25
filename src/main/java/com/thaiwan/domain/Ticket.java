@@ -1,4 +1,4 @@
-package com.thaiwan.entities;
+package com.thaiwan.domain;
 
 import javax.persistence.*;
 
@@ -13,6 +13,9 @@ public class Ticket {
     private int passengerId;
     @Column(name="routeNumber")
     private int routeNumber;
+
+    Route route;
+    Passenger passenger;
 
     public Ticket() {
     }

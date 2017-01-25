@@ -1,6 +1,7 @@
 package com.thaiwan;
 
-import com.thaiwan.entities.Bus;
+import com.thaiwan.domain.Bus;
+import com.thaiwan.domain.Passenger;
 import com.thaiwan.managers.HibernateManager;
 import org.hibernate.Session;
 
@@ -17,6 +18,7 @@ public class Main {
         session.beginTransaction();
         Bus bus = new Bus(15);
         System.out.println("begin saving + bus - " + bus);
+        Passenger passenger = new Passenger();
         session.save(bus);
         session.getTransaction().commit();
     }

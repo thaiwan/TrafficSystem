@@ -1,12 +1,11 @@
-package com.thaiwan.entities;
+package com.thaiwan.domain;
 
 import javax.persistence.*;
 import java.sql.Time;
-import java.util.Date;
 
 @Entity
-@Table(name = "schedule")
-public class Schedule {
+@Table(name = "route")
+public class Route {
     @Id
     @Column(name="routeNumber")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -22,7 +21,11 @@ public class Schedule {
     @Column(name = "arrivalStationId")
     private int arrivalStationId;
 
-    public Schedule() {
+    Bus bus;
+    Station departureStation;
+    Station arrivalStation;
+
+    public Route() {
     }
 
     public int getRouteNumber() {

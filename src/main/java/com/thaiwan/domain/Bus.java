@@ -1,16 +1,24 @@
-package com.thaiwan.entities;
+package com.thaiwan.domain;
+
+import com.thaiwan.dao.BusDAO;
 
 import javax.persistence.*;
+import java.util.List;
+
+
 
 @Entity
 @Table(name = "buses")
 public class Bus {
+
     @Id
     @Column(name="busNumber")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int busNumber;
     @Column(name = "numberOfSeats")
     private int numberOfSeats;
+
+    Route route;
 
     public Bus() {}
 
@@ -33,4 +41,5 @@ public class Bus {
     public void setNumberOfSeats(int numberOfSeats) {
         this.numberOfSeats = numberOfSeats;
     }
+
 }

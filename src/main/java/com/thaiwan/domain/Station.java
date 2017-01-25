@@ -1,4 +1,4 @@
-package com.thaiwan.entities;
+package com.thaiwan.domain;
 
 import javax.persistence.*;
 
@@ -12,8 +12,11 @@ public class Station {
     @Column(name="stationName")
     private String stationName;
 
+    Route route;
+
     public Station() {
     }
+
 
     public int getStationId() {
         return stationId;

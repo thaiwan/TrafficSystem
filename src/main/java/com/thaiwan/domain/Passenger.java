@@ -1,7 +1,13 @@
-package com.thaiwan.entities;
+package com.thaiwan.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 
 @Entity
 @Table(name = "passengers")
@@ -17,7 +23,15 @@ public class Passenger {
     @Column(name = "dateOfBirth")
     private Date dateOfBirth;
 
+    Ticket ticket;
+
     public Passenger() {
+    }
+
+    public Passenger(String name, String surname, Date dateOfBirth) {
+        this.name = name;
+        this.surname = surname;
+        this.dateOfBirth = dateOfBirth;
     }
 
     public int getPassengerId() {
