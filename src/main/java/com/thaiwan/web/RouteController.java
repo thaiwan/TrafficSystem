@@ -18,7 +18,7 @@ public class RouteController {
     @Autowired
     private RouteService routeService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/route/index")
     public String allRoutes(Map<String, Object> map){
 
         map.put("route", new Route());
@@ -27,25 +27,25 @@ public class RouteController {
         return "route";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/route/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/route/index";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/route/add", method = RequestMethod.POST)
     public String addRoute(@ModelAttribute("route") Route route,
                                BindingResult result) {
 
         routeService.addRoute(route);
 
-        return "redirect:/index";
+        return "redirect:/route/index";
     }
 
-    @RequestMapping("/delete/{routeNumber}")
+    @RequestMapping("/route/delete/{routeNumber}")
     public String deleteRoute(@PathVariable("routeNumber") Integer routeNumber) {
 
         routeService.deleteRoute(routeNumber);
 
-        return "redirect:/index";
+        return "redirect:/route/index";
     }
 }

@@ -23,7 +23,6 @@ public class Passenger {
     @Column(name = "dateOfBirth")
     private Date dateOfBirth;
 
-    Ticket ticket;
 
     public Passenger() {
     }

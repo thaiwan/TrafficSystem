@@ -18,7 +18,7 @@ public class PassengerController {
     @Autowired
     private PassengerService passengerService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/passenger/index")
     public String allPassengers(Map<String, Object> map){
 
         map.put("passenger", new Passenger());
@@ -27,9 +27,9 @@ public class PassengerController {
         return "passenger";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/passenger/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/passenger/index";
     }
 
     @RequestMapping(value = "/add", method = RequestMethod.POST)
@@ -38,14 +38,14 @@ public class PassengerController {
 
         passengerService.addPassenger(passenger);
 
-        return "redirect:/index";
+        return "redirect:/passenger/index";
     }
 
-    @RequestMapping("/delete/{passengerId}")
+    @RequestMapping("/passenger/delete/{passengerId}")
     public String deletePassenger(@PathVariable("passengerId") Integer passengerId) {
 
         passengerService.deletePassenger(passengerId);
 
-        return "redirect:/index";
+        return "redirect:/passenger/index";
     }
 }

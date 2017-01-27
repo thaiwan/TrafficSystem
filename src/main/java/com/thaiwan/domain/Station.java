@@ -12,7 +12,6 @@ public class Station {
     @Column(name="stationName")
     private String stationName;
 
-    Route route;
 
     public Station() {
     }

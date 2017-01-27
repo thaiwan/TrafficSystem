@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public class BusDAOImpl implements BusDAO{
+public class BusDAOImpl implements BusDAO {
 
     @Autowired
     private SessionFactory sessionFactory;

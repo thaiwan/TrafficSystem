@@ -18,7 +18,6 @@ public class Bus {
     @Column(name = "numberOfSeats")
     private int numberOfSeats;
 
-    Route route;
 
     public Bus() {}
 

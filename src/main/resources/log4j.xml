@@ -1,0 +1,4 @@
+<!--org.hibernate.SQL logger-->
+<logger name="org.hibernate">
+    <level value="info"/>
+</logger>

@@ -21,9 +21,7 @@ public class Route {
     @Column(name = "arrivalStationId")
     private int arrivalStationId;
 
-    Bus bus;
-    Station departureStation;
-    Station arrivalStation;
+
 
     public Route() {
     }

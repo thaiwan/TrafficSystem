@@ -18,7 +18,7 @@ public class TicketController {
     @Autowired
     private TicketService ticketService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/ticket/index")
     public String allTickets(Map<String, Object> map){
 
         map.put("ticket", new Ticket());
@@ -27,25 +27,25 @@ public class TicketController {
         return "ticket";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/ticket/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/ticket/index";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/ticket/add", method = RequestMethod.POST)
     public String addTicket(@ModelAttribute("ticket") Ticket ticket,
                            BindingResult result) {
 
         ticketService.addTicket(ticket);
 
-        return "redirect:/index";
+        return "redirect:/ticket/index";
     }
 
-    @RequestMapping("/delete/{ticketId}")
+    @RequestMapping("/ticket/delete/{ticketId}")
     public String deleteTicket(@PathVariable("ticketId") Integer ticketId) {
 
         ticketService.deleteTicket(ticketId);
 
-        return "redirect:/index";
+        return "redirect:/ticket/index";
     }
 }

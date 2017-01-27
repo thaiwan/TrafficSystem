@@ -18,7 +18,12 @@ public class BusController {
     @Autowired
     private BusService busService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/")
+    public String defaultAddress() {
+        return "index";
+    }
+
+    @RequestMapping("/bus/index")
     public String allBuses(Map<String, Object> map){
 
         map.put("bus", new Bus());
@@ -27,26 +32,26 @@ public class BusController {
         return "bus";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/bus/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/bus/index";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/bus/add", method = RequestMethod.POST)
     public String addBus(@ModelAttribute("bus") Bus bus,
                              BindingResult result) {
 
         busService.addBus(bus);
 
-        return "redirect:/index";
+        return "redirect:/bus/index";
     }
 
-    @RequestMapping("/delete/{busNumber}")
+    @RequestMapping("/bus/delete/{busNumber}")
     public String deleteBus(@PathVariable("busNumber") Integer busNumber) {
 
         busService.deleteBus(busNumber);
 
-        return "redirect:/index";
+        return "redirect:/bus/index";
     }
 
 }

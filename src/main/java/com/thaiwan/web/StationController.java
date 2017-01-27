@@ -18,7 +18,7 @@ public class StationController {
     @Autowired
     private StationService stationService;
 
-    @RequestMapping("/index")
+    @RequestMapping("/station/index")
     public String allStation(Map<String, Object> map){
 
         map.put("station", new Station());
@@ -27,25 +27,25 @@ public class StationController {
         return "station";
     }
 
-    @RequestMapping("/")
+    @RequestMapping("/station/")
     public String home() {
-        return "redirect:/index";
+        return "redirect:/station/index";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/station/add", method = RequestMethod.POST)
     public String addRoute(@ModelAttribute("station") Station station,
                            BindingResult result) {
 
         stationService.addStation(station);
 
-        return "redirect:/index";
+        return "redirect:/station/index";
     }
 
-    @RequestMapping("/delete/{stationId}")
+    @RequestMapping("/station/delete/{stationId}")
     public String deleteStation(@PathVariable("stationId") Integer stationId) {
 
         stationService.deleteStation(stationId);
 
-        return "redirect:/index";
+        return "redirect:/station/index";
     }
 }

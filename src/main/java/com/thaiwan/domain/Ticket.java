@@ -14,8 +14,6 @@ public class Ticket {
     @Column(name="routeNumber")
     private int routeNumber;
 
-    Route route;
-    Passenger passenger;
 
     public Ticket() {
     }
