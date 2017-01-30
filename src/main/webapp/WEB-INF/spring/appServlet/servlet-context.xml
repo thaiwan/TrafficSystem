@@ -26,6 +26,7 @@
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
 
+
     <!-- Файл с настройками контроллеров -->
     <beans:import resource="controllers.xml" />
 

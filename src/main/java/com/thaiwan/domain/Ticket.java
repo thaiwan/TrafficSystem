@@ -9,11 +9,15 @@ public class Ticket {
     @Column(name="ticketId")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int ticketId;
-    @Column(name="passengerId")
-    private int passengerId;
-    @Column(name="routeNumber")
-    private int routeNumber;
 
+
+    @ManyToOne
+    @JoinColumn(name = "passengerId")
+    private Passenger passenger;
+
+    @ManyToOne
+    @JoinColumn(name = "routeNumber")
+    private Route route;
 
     public Ticket() {
     }
@@ -22,23 +26,40 @@ public class Ticket {
         return ticketId;
     }
 
-    public int getPassengerId() {
-        return passengerId;
-    }
+//    public int getPassengerId() {
+//        return passengerId;
+//    }
 
-    public int getRouteNumber() {
-        return routeNumber;
-    }
+//    public int getRouteNumber() {
+//        return routeNumber;
+//    }
 
     public void setTicketId(int ticketId) {
         this.ticketId = ticketId;
     }
 
-    public void setPassengerId(int passengerId) {
-        this.passengerId = passengerId;
+//    public void setPassengerId(int passengerId) {
+//        this.passengerId = passengerId;
+//    }
+
+//    public void setRouteNumber(int routeNumber) {
+//        this.routeNumber = routeNumber;
+//    }
+
+
+    public Passenger getPassenger() {
+        return passenger;
     }
 
-    public void setRouteNumber(int routeNumber) {
-        this.routeNumber = routeNumber;
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
+
+    public Route getRoute() {
+        return route;
+    }
+
+    public void setRoute(Route route) {
+        this.route = route;
     }
 }

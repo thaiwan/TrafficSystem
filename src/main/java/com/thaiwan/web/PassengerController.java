@@ -21,18 +21,18 @@ public class PassengerController {
     @RequestMapping("/passenger/index")
     public String allPassengers(Map<String, Object> map){
 
-        map.put("passenger", new Passenger());
+//        map.put("passenger", new Passenger());
         map.put("allPassengers", passengerService.allPassengers());
 
         return "passenger";
     }
 
     @RequestMapping("/passenger/")
-    public String home() {
-        return "redirect:/passenger/index";
+    public String formForaddPassenger() {
+        return "addPassenger";
     }
 
-    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/passenger/add", method = RequestMethod.POST)
     public String addPassenger(@ModelAttribute("passenger") Passenger passenger,
                          BindingResult result) {
 

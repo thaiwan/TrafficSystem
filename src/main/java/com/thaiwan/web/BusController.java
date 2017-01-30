@@ -20,21 +20,21 @@ public class BusController {
 
     @RequestMapping("/")
     public String defaultAddress() {
-        return "index";
+        return "about";
     }
 
     @RequestMapping("/bus/index")
     public String allBuses(Map<String, Object> map){
 
-        map.put("bus", new Bus());
+//        map.put("bus", new Bus());
         map.put("allBuses", busService.allBuses());
 
         return "bus";
     }
 
     @RequestMapping("/bus/")
-    public String home() {
-        return "redirect:/bus/index";
+    public String formForAddBus() {
+        return "addBus";
     }
 
     @RequestMapping(value = "/bus/add", method = RequestMethod.POST)

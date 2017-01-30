@@ -1,10 +1,11 @@
 package com.thaiwan.domain;
 
 import com.thaiwan.dao.BusDAO;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.List;
-
+import java.util.Set;
 
 
 @Entity
@@ -18,6 +19,9 @@ public class Bus {
     @Column(name = "numberOfSeats")
     private int numberOfSeats;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "bus")
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    private Set<Route> routes;
 
     public Bus() {}
 
@@ -41,4 +45,11 @@ public class Bus {
         this.numberOfSeats = numberOfSeats;
     }
 
+    public Set<Route> getRoutes() {
+        return routes;
+    }
+
+    public void setRoutes(Set<Route> routes) {
+        this.routes = routes;
+    }
 }

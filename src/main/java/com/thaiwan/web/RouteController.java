@@ -1,7 +1,11 @@
 package com.thaiwan.web;
 
+import com.thaiwan.domain.Bus;
 import com.thaiwan.domain.Route;
+import com.thaiwan.domain.Station;
+import com.thaiwan.service.BusService;
 import com.thaiwan.service.RouteService;
+import com.thaiwan.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -17,19 +21,28 @@ public class RouteController {
 
     @Autowired
     private RouteService routeService;
+    @Autowired
+    private BusService busService;
+    @Autowired
+    private StationService stationService;
 
     @RequestMapping("/route/index")
     public String allRoutes(Map<String, Object> map){
 
-        map.put("route", new Route());
+//        map.put("route", new Route());
         map.put("allRoutes", routeService.allRoutes());
 
         return "route";
     }
 
-    @RequestMapping("/route/")
-    public String home() {
-        return "redirect:/route/index";
+    @RequestMapping(value = "/route/", method = RequestMethod.GET)
+    public String formForAddRoute(Map<String, Object> map) {
+//        map.put("bus", new Bus());
+        map.put("allBuses", busService.allBuses());
+//        map.put("departureStation", new Station());
+        map.put("allStations", stationService.allStations());
+//        map.put("arrivalStation", new Station());
+        return "addRoute";
     }
 
     @RequestMapping(value = "/route/add", method = RequestMethod.POST)

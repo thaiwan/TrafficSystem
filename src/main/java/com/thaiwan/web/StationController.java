@@ -21,15 +21,15 @@ public class StationController {
     @RequestMapping("/station/index")
     public String allStation(Map<String, Object> map){
 
-        map.put("station", new Station());
+//        map.put("station", new Station());
         map.put("allStations", stationService.allStations());
 
         return "station";
     }
 
     @RequestMapping("/station/")
-    public String home() {
-        return "redirect:/station/index";
+    public String formForAddStation() {
+        return "addStation";
     }
 
     @RequestMapping(value = "/station/add", method = RequestMethod.POST)

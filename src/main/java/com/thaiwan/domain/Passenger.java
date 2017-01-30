@@ -2,8 +2,10 @@ package com.thaiwan.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.annotations.Cascade;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -23,6 +25,9 @@ public class Passenger {
     @Column(name = "dateOfBirth")
     private Date dateOfBirth;
 
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "passenger")
+    @Cascade(org.hibernate.annotations.CascadeType.REMOVE)
+    private Set<Ticket> tickets;
 
     public Passenger() {
     }
@@ -63,5 +68,13 @@ public class Passenger {
 
     public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+
+    public Set<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(Set<Ticket> tickets) {
+        this.tickets = tickets;
     }
 }

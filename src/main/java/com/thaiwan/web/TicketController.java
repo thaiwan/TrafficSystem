@@ -1,6 +1,8 @@
 package com.thaiwan.web;
 
 import com.thaiwan.domain.Ticket;
+import com.thaiwan.service.PassengerService;
+import com.thaiwan.service.RouteService;
 import com.thaiwan.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,19 +19,25 @@ public class TicketController {
 
     @Autowired
     private TicketService ticketService;
+    @Autowired
+    private RouteService routeService;
+    @Autowired
+    private PassengerService passengerService;
 
     @RequestMapping("/ticket/index")
     public String allTickets(Map<String, Object> map){
 
-        map.put("ticket", new Ticket());
+//        map.put("ticket", new Ticket());
         map.put("allTickets", ticketService.allTickets());
 
         return "ticket";
     }
 
-    @RequestMapping("/ticket/")
-    public String home() {
-        return "redirect:/ticket/index";
+    @RequestMapping(value = "/ticket/", method = RequestMethod.GET)
+    public String formForAddTicket(Map<String, Object> map) {
+        map.put("allPassengers", passengerService.allPassengers());
+        map.put("allRoutes", routeService.allRoutes());
+        return "addTicket";
     }
 
     @RequestMapping(value = "/ticket/add", method = RequestMethod.POST)
