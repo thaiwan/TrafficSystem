@@ -12,4 +12,6 @@ public interface BusService {
 
     public void deleteBus(Integer busNumber);
 
+    public Bus findBus(Integer busNumber);
+
 }

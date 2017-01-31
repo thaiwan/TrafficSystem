@@ -50,7 +50,7 @@
 </table>
 <br>
 <br>
-<a href="/route/"><img src="/resources/icons/add.png" title="Добавить маршрут"></a>
+<a href="/route/add"><img src="/resources/icons/add.png" title="Добавить маршрут"></a>
 <script>
     new Tablesort(document.getElementById('table-id'));
 </script>

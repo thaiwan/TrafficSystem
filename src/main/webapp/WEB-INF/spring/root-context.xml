@@ -3,25 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:jee="http://www.springframework.org/schema/jee"
-       xmlns:lang="http://www.springframework.org/schema/lang"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/aop
-       http://www.springframework.org/schema/aop/spring-aop.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
-       http://www.springframework.org/schema/jee
-       http://www.springframework.org/schema/jee/spring-jee.xsd
-       http://www.springframework.org/schema/lang
-       http://www.springframework.org/schema/lang/spring-lang.xsd
-       http://www.springframework.org/schema/tx
-       http://www.springframework.org/schema/tx/spring-tx.xsd
-       http://www.springframework.org/schema/util
-       http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd">
 
     <!-- Root Context: определяет ресурсы, доступные всему приложению, всем сервлетам -->
 
@@ -31,11 +19,21 @@
     <!-- Определяем папки, в которых будем автоматически искать бины-компоненты (@Component, @Service)  -->
     <context:component-scan base-package="com.thaiwan.dao" />
     <context:component-scan base-package="com.thaiwan.service" />
+    <context:component-scan base-package="com.thaiwan.converters" />
 
     <!-- Файл с настройками ресурсов для работы с данными (Data Access Resources) -->
     <import resource="data.xml" />
 
     <!-- Файл с настройками безопасности -->
-    <import resource="security.xml" />
+    <!--<import resource="security.xml" />-->
+    <mvc:annotation-driven conversion-service="conversionService" />
+
+    <bean id="conversionService" class="org.springframework.format.support.FormattingConversionServiceFactoryBean">
+        <property name="converters">
+            <set>
+                <bean class="com.thaiwan.converters.IdToBusConverter" />
+            </set>
+        </property>
+    </bean>
 
 </beans>

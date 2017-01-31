@@ -10,5 +10,6 @@ public interface BusDAO {
     public void addBus(Bus bus);
     public List<Bus> allBuses();
     public void deleteBus(Integer busNumber);
+    public Bus findBus(Integer busNubmer);
 
 }

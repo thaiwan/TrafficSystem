@@ -32,4 +32,8 @@ public class BusDAOImpl implements BusDAO {
             sessionFactory.getCurrentSession().delete(bus);
         }
     }
+
+    public Bus findBus(Integer busNumber) {
+        return (Bus) sessionFactory.getCurrentSession().get(Bus.class, busNumber);
+    }
 }

@@ -29,4 +29,9 @@ public class BusServiceImpl implements BusService {
     public void deleteBus(Integer busNumber) {
         busDAO.deleteBus(busNumber);
     }
+
+    @Transactional
+    public Bus findBus(Integer busNumber) {
+        return busDAO.findBus(busNumber);
+    }
 }

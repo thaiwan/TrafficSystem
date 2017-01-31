@@ -8,11 +8,10 @@ import com.thaiwan.service.RouteService;
 import com.thaiwan.service.StationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
@@ -35,23 +34,24 @@ public class RouteController {
         return "route";
     }
 
-    @RequestMapping(value = "/route/", method = RequestMethod.GET)
-    public String formForAddRoute(Map<String, Object> map) {
-//        map.put("bus", new Bus());
-        map.put("allBuses", busService.allBuses());
-//        map.put("departureStation", new Station());
-        map.put("allStations", stationService.allStations());
-//        map.put("arrivalStation", new Station());
+    @RequestMapping(value = "/route/add", method = RequestMethod.GET)
+    public String formForAddRoute(ModelMap model){
+
+        model.addAttribute("routeAttribute", new Route());
+        model.addAttribute("allBuses", busService.allBuses());
+        model.addAttribute("allStations", stationService.allStations());
+
         return "addRoute";
     }
 
     @RequestMapping(value = "/route/add", method = RequestMethod.POST)
-    public String addRoute(@ModelAttribute("route") Route route,
-                               BindingResult result) {
+    public String addRoute(@ModelAttribute("routeAttribute") Route route, ModelMap map,
+                           BindingResult binding) {
 
         routeService.addRoute(route);
 
         return "redirect:/route/index";
+
     }
 
     @RequestMapping("/route/delete/{routeNumber}")
